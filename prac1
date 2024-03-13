@@ -1,3 +1,6 @@
+/*Write a program to compute the sum of the first n terms of the following series:
+Sum=1-1/2²+1/3³----*/
+
 #include <iostream>
 using namespace std
 
