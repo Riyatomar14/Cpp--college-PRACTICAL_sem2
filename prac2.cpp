@@ -2,42 +2,36 @@
 
 #include <iostream>
 using namespace std;
-
-void removeDuplicates(int arr[], int& n) {
+void removeduplicate(int arr[],int& n){
     int index = 0;
-    for (int i = 0; i < n; ++i) {
-        bool isDuplicate = false;
+    for(int i=0;i<n;i++){
+        bool isduplicate = false;
         
-        for (int j = 0; j < index; ++j) {
-            if (arr[i] == arr[j]) {
-                isDuplicate = true;
+        for( int j=0;j<i;j++){
+            if(arr[i]==arr[j]){
+                isduplicate = true;;
                 break;
             }
         }
-        if (!isDuplicate) {
-            arr[index++] = arr[i];
+        if(!isduplicate){
+            arr[index++]=arr[i];
         }
     }
-    n = index; //update value of n
+    n=index;
 }
-
 int main() {
-    int arr[] = {1, 2, 3, 4, 2, 3, 5};
-    int n = sizeof(arr) / sizeof(arr[0]);
-
-    cout << "Original Array: ";
-    for (int i = 0; i < n; ++i) {
-        cout << arr[i] << " ";
+    int n;
+    int arr[5] = {1,3,4,3,4};
+    n = sizeof(arr)/sizeof(arr[0]);
+    cout<<"original array:";
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<<" ";
     }
     cout << endl;
-
-    removeDuplicates(arr, n);
-
-    cout << "Array after removing duplicates: ";
-    for (int i = 0; i < n; ++i) {
-        cout << arr[i] << " ";
+    removeduplicate(arr,n);
+    cout<<"after removing the duplicate from the array:";
+    for(int i=0;i<n;i++){
+        cout<<arr[i]<< " ";
     }
-    cout << endl;
-
     return 0;
 }
