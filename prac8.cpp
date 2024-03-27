@@ -77,3 +77,34 @@ int main() {
 
 / transpose of matrix
 
+#include <iostream>
+using namespace std;
+
+const int MAX = 100;
+
+int main() {
+    int matrix[MAX][MAX], transpose[MAX][MAX];
+    int row, col;
+    cout << "Enter the number of rows and columns of the matrix: ";
+    cin >> row >> col;
+    cout << "Enter the elements of the matrix:" << endl;
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            cin >> matrix[i][j];
+        }
+    }
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            transpose[j][i] = matrix[i][j];
+        }
+    }
+    cout << "Transpose of the matrix:" << endl;
+    for (int i = 0; i < col; i++) {
+        for (int j = 0; j < row; j++) {
+            cout << transpose[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
