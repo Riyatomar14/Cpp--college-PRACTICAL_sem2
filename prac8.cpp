@@ -1,4 +1,5 @@
 /* display matrix sum , product ,transpose */
+/sum of matrix
 
 #include <iostream>
 using namespace std;
@@ -34,3 +35,6 @@ int main() {
 
     return 0;
 }
+
+/ mutiplication of matrix
+
