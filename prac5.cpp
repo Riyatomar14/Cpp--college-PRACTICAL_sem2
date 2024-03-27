@@ -1,37 +1,24 @@
-#include <iostream>
-#include <vector>
+/* merge two array */
 
-std::vector<int> mergeArrays(const std::vector<int>& arr1, const std::vector<int>& arr2) {
-    std::vector<int> merged;
-    int i = 0, j = 0;
-    while (i < arr1.size() && j < arr2.size()) {
-        if (arr1[i] <= arr2[j]) {
-            merged.push_back(arr1[i]);
-            i++;
-        } else {
-            merged.push_back(arr2[j]);
-            j++;
-        }
-    }
-    while (i < arr1.size()) {
-        merged.push_back(arr1[i]);
-        i++;
-    }
-    while (j < arr2.size()) {
-        merged.push_back(arr2[j]);
-        j++;
-    }
-    return merged;
-}
+#include <iostream>
+using namespace std;
 
 int main() {
-    std::vector<int> arr1 = {1, 3, 5, 7, 9};
-    std::vector<int> arr2 = {2, 4, 6, 8, 10};
-    std::vector<int> merged = mergeArrays(arr1, arr2);
-    std::cout << "Merged array: ";
-    for (int num : merged) {
-        std::cout << num << " ";
+    int arr1[] = {1, 2, 3};
+    int arr2[] = {4, 5, 6, 7};
+    int n1 = sizeof(arr1) / sizeof(arr1[0]);
+    int n2 = sizeof(arr2) / sizeof(arr2[0]);
+    int cl = n1 + n2;
+    int c[cl];
+    int i, j;
+    for (i = 0; i < n1; i++) {
+        c[i] = arr1[i];
     }
-    std::cout << std::endl;
+    for (j = 0; j < n2; j++) {
+        c[n1 + j] = arr2[j];
+    }
+    for (i = 0; i < cl; i++) {
+        cout << c[i] << " ";
+    }
     return 0;
 }
