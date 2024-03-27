@@ -2,7 +2,7 @@
 Sum=1-1/2²+1/3³----*/
 
 #include <iostream>
-using namespace std
+using namespace std;
 
 double seriesSum(int n) {
     double sum = 0.0;
