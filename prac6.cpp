@@ -1,58 +1,70 @@
 /* search a given element in a set of N number of binary search */
 
-#include <iostream>
-#include <vector>
-
 // Binary search without recursion
-int binarySearch(std::vector<int>& nums, int target) {
-    int left = 0, right = nums.size() - 1;
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] == target) {
-            return mid;
-        } else if (nums[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return -1; // Not found
-}
+i#include <iostream>
+using namespace std;
 
-// Binary search with recursion
-int binarySearchRecursive(std::vector<int>& nums, int target, int left, int right) {
-    if (left <= right) {
-        int mid = left + (right - left) / 2;
-        if (nums[mid] == target) {
+int binarySearch(int arr[], int size, int key) {
+    int high = size - 1;
+    int low = 0;
+    while (low <= high) {
+        int mid = (high + low) / 2;
+        if (key == arr[mid]) {
             return mid;
-        } else if (nums[mid] < target) {
-            return binarySearchRecursive(nums, target, mid + 1, right);
+        } else if (key > arr[mid]) {
+            low = mid + 1;
         } else {
-            return binarySearchRecursive(nums, target, left, mid - 1);
+            high = mid - 1;
         }
     }
-    return -1; // Not found
+    return -1;
 }
 
 int main() {
-    std::vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-    int target = 5;
-
-    // Using binary search without recursion
-    int index = binarySearch(nums, target);
-    if (index != -1) {
-        std::cout << "Element found at index " << index << std::endl;
+    int arr[] = {1, 3, 6, 8, 9, 10, 15, 34, 54, 56, 78};
+    int size = sizeof(arr) / sizeof(arr[0]); 
+    int key = 8;
+    int result = binarySearch(arr, size, key);
+    if (result != -1) {
+        cout << "Element found at index " << result << endl;
     } else {
-        std::cout << "Element not found." << std::endl;
+        cout << "Element not found" << endl;
     }
-
-    // Using binary search with recursion
-    index = binarySearchRecursive(nums, target, 0, nums.size() - 1);
-    if (index != -1) {
-        std::cout << "Element found at index " << index << std::endl;
-    } else {
-        std::cout << "Element not found." << std::endl;
-    }
-
     return 0;
 }
+
+// Binary search with recursion
+#include <iostream>
+using namespace std;
+
+int binarySearch(int arr[], int key, int high, int low) {
+    if (low > high) return -1;
+    
+    int mid = (high + low) / 2;
+    if (key == arr[mid]) {
+        return mid;
+    }
+    else if (key > arr[mid]) {
+        return binarySearch(arr, key, high, mid + 1);
+    }
+    else {
+        return binarySearch(arr, key, mid - 1, low);
+    }
+}
+
+int main() {
+    int arr[] = {1, 3, 6, 8, 9, 10, 15, 34, 54, 56, 78};
+    int n = sizeof(arr) / sizeof(arr[0]); 
+    int key = 8;
+    int high = n - 1; 
+    int low = 0;
+    int result = binarySearch(arr, key, high, low);
+    if (result != -1) {
+        cout << "Element found at index " << result << endl;
+    } else {
+        cout << "Element not found" << endl;
+    } 
+    return 0;
+}
+
+
