@@ -13,7 +13,7 @@ public:
 
     virtual void display() 
 const {
-        cout << "Name: " << name << std::endl;
+        cout << "Name: " << name << endl;
     }
 };
 
