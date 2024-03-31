@@ -9,10 +9,11 @@ protected:
     string name;
 
 public:
-    Person(const std::string& n) : name(n) {}
+    Person(const string& n) : name(n) {}
 
-    virtual void display() const {
-        std::cout << "Name: " << name << std::endl;
+    virtual void display() 
+const {
+        cout << "Name: " << name << std::endl;
     }
 };
 
@@ -26,11 +27,12 @@ private:
 public:
     Student(const string& n, const string& c, int m, int y) : Person(n), course(c), marks(m), year(y) {}
 
-    void display() const override {
+    void display() 
+const override {
         Person::display();
-        std::cout << "Course: " << course << std::endl;
-        std::cout << "Marks: " << marks << std::endl;
-        std::cout << "Year: " << year << std::endl;
+        cout << "Course: " << course << endl;
+        cout << "Marks: " << marks << endl;
+        cout << "Year: " << year << endl;
     }
 };
 
@@ -41,9 +43,10 @@ private:
     double salary; //doule store upto 15 decimal
 
 public:
-    Employee(const std::string& n, const std::string& d, double s) : Person(n), department(d), salary(s) {}
+    Employee(const string& n, const string& d, double s) : Person(n), department(d), salary(s) {}
 
-    void display() const override {
+    void display() 
+const override {
         Person::display();
         std::cout << "Department: " << department << std::endl;
         std::cout << "Salary: " << salary << std::endl;
