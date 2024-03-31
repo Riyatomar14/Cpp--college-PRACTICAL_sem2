@@ -1,7 +1,6 @@
 /* inheritance and runtime polymorphism */
 
 #include <iostream>
-#include <string>
 using namespace std;
 
 class Person {
