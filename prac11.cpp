@@ -1,43 +1,42 @@
 /* file operation */
 
 #include <iostream>
-#include <fstream>
-#include <string>
+using namespace std;
 
 class Student {
 private:
     int rollNo;
-    std::string name;
-    std::string className;
+    string name;
+    string className;
     int year;
     int totalMarks;
 
 public:
-    Student(int r, const std::string& n, const std::string& c, int y, int t) : rollNo(r), name(n), className(c), year(y), totalMarks(t) {}
+    Student(int r, const string& n, const string& c, int y, int t) : rollNo(r), name(n), className(c), year(y), totalMarks(t) {}
 
-    void saveToFile(std::ofstream& file) const {
-        file << rollNo << " " << name << " " << className << " " << year << " " << totalMarks << std::endl;
+    void saveToFile(ofstream& file) const {
+        file << rollNo << " " << name << " " << className << " " << year << " " << totalMarks << endl;
     }
 
-    static Student readFromFile(std::ifstream& file) {
+    static Student readFromFile(ifstream& file) {
         int rollNo;
-        std::string name, className;
+        string name, className;
         int year, totalMarks;
         file >> rollNo >> name >> className >> year >> totalMarks;
         return Student(rollNo, name, className, year, totalMarks);
     }
 
     void display() const {
-        std::cout << "Roll No.: " << rollNo << std::endl;
-        std::cout << "Name: " << name << std::endl;
-        std::cout << "Class: " << className << std::endl;
-        std::cout << "Year: " << year << std::endl;
-        std::cout << "Total Marks: " << totalMarks << std::endl;
+        cout << "Roll No.: " << rollNo << endl;
+        cout << "Name: " << name << endl;
+        cout << "Class: " << className << endl;
+        cout << "Year: " << year << endl;
+        cout << "Total Marks: " << totalMarks << endl;
     }
 };
 
 int main() {
-    std::ofstream outFile("students.txt");
+    ofstream outFile("students.txt");
     if (outFile.is_open()) {
         Student student1(1, "John Doe", "Class X", 2023, 450);
         Student student2(2, "Alice Smith", "Class XI", 2022, 480);
@@ -45,10 +44,10 @@ int main() {
         student2.saveToFile(outFile);
         outFile.close();
     } else {
-        std::cerr << "Unable to open file for writing." << std::endl;
+        cerr << "Unable to open file for writing." << endl;
     }
 
-    std::ifstream inFile("students.txt");
+    ifstream inFile("students.txt");
     if (inFile.is_open()) {
         Student student1 = Student::readFromFile(inFile);
         Student student2 = Student::readFromFile(inFile);
@@ -56,7 +55,7 @@ int main() {
         student2.display();
         inFile.close();
     } else {
-        std::cerr << "Unable to open file for reading." << std::endl;
+        cerr << "Unable to open file for reading." << endl;
     }
 
     return 0;
