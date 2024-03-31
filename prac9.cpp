@@ -2,10 +2,11 @@
 
 #include <iostream>
 #include <string>
+using namespace std;
 
 class Person {
 protected:
-    std::string name;
+    string name;
 
 public:
     Person(const std::string& n) : name(n) {}
@@ -15,14 +16,15 @@ public:
     }
 };
 
-class Student : public Person {
+class Student : public Person 
+{
 private:
-    std::string course;
+    string course;
     int marks;
     int year;
 
 public:
-    Student(const std::string& n, const std::string& c, int m, int y) : Person(n), course(c), marks(m), year(y) {}
+    Student(const string& n, const string& c, int m, int y) : Person(n), course(c), marks(m), year(y) {}
 
     void display() const override {
         Person::display();
@@ -32,10 +34,11 @@ public:
     }
 };
 
-class Employee : public Person {
+class Employee : public Person 
+{
 private:
-    std::string department;
-    double salary;
+    string department;
+    double salary; //doule store upto 15 decimal
 
 public:
     Employee(const std::string& n, const std::string& d, double s) : Person(n), department(d), salary(s) {}
