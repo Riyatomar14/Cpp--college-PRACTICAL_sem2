@@ -1,7 +1,7 @@
 /* search a given element in a set of N number of binary search */
 
 // Binary search without recursion
-i#include <iostream>
+#include <iostream>
 using namespace std;
 
 int binarySearch(int arr[], int size, int key) {
