@@ -36,15 +36,15 @@ public:
 int main() {
     Student s[5];
     ofstream file;
-    file.open("students.txt", ios::out); //ios::out is used to open the file in write mode
+    file.open("students.txt", ios::out);
     for (int i = 0; i < 5; i++) {
         s[i].input();
-        file.write((char *)&s[i], sizeof(s[i])); // write(record, size of record)
+        file.write((char *)&s[i], sizeof(s[i]));
     }
     file.close();
 
     ifstream file2;
-    file2.open("students.txt", ios::in); //ios::in is used to open the file in read mode
+    file2.open("students.txt", ios::in); 
     for (int i = 0; i < 5; i++) {
         file2.read((char *)&s[i], sizeof(s[i])); // read(record, size of record)
         s[i].display();
