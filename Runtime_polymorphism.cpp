@@ -1,33 +1,34 @@
 /* inheritance and runtime polymorphism */
 
 #include <iostream>
+#include <string>
 using namespace std;
 
 class Person {
 protected:
     string name;
-
 public:
-    Person(const string& n) : name(n) {}
+    Person(string name) {
+        this->name = name;
+    }
 
-    virtual void display() 
-const {
+    virtual void display() {
         cout << "Name: " << name << endl;
     }
 };
 
-class Student : public Person 
-{
-private:
+class Student : public Person {
     string course;
     int marks;
     int year;
-
 public:
-    Student(const string& n, const string& c, int m, int y) : Person(n), course(c), marks(m), year(y) {}
+    Student(string name, string course, int marks, int year) : Person(name) {
+        this->course = course;
+        this->marks = marks;
+        this->year = year;
+    }
 
-    void display() 
-const override {
+    void display() {
         Person::display();
         cout << "Course: " << course << endl;
         cout << "Marks: " << marks << endl;
@@ -35,35 +36,33 @@ const override {
     }
 };
 
-class Employee : public Person 
-{
-private:
+class Employee : public Person {
     string department;
-    double salary; //doule store upto 15 decimal
-
+    int salary;
 public:
-    Employee(const string& n, const string& d, double s) : Person(n), department(d), salary(s) {}
+    Employee(string name, string department, int salary) : Person(name) {
+        this->department = department;
+        this->salary = salary;
+    }
 
-    void display() 
-const override {
+    void display() {
         Person::display();
-        std::cout << "Department: " << department << std::endl;
-        std::cout << "Salary: " << salary << std::endl;
+        cout << "Department: " << department << endl;
+        cout << "Salary: " << salary << endl;
     }
 };
 
 int main() {
-    Person* person1 = new Person("John Doe");
-    Person* student1 = new Student("Alice Smith", "Computer Science", 90, 2023);
-    Person* employee1 = new Employee("Bob Johnson", "Engineering", 75000);
+    Person *p;
+    Student s("John", "B.Tech", 90, 2023);
+    Employee e("Jane", "HR", 50000);
 
-    person1->display();
-    student1->display();
-    employee1->display();
+    p = &s;
+    p->display();
+    cout<<endl;
+    p = &e;
+    p->display();
 
-    delete person1;
-    delete student1;
-    delete employee1;
 
     return 0;
 }
