@@ -2,29 +2,24 @@
 
 #include <iostream>
 #include <fstream>
-#include <string>
 
-void copyFileWithWhitespaceRemoval(const std::string& sourceFile, const std::string& destinationFile) {
-    std::ifstream inFile(sourceFile);
-    std::ofstream outFile(destinationFile);
-    if (inFile.is_open() && outFile.is_open()) {
-        char c;
-        while (inFile.get(c)) {
-            if (!std::isspace(c)) {
-                outFile.put(c);
-            }
-        }
-        std::cout << "File content copied with whitespaces removed." << std::endl;
-        inFile.close();
-        outFile.close();
-    } else {
-        std::cerr << "Unable to open files." << std::endl;
-    }
-}
+using namespace std;
 
 int main() {
-    std::string sourceFile = "input.txt";
-    std::string destinationFile = "output.txt";
-    copyFileWithWhitespaceRemoval(sourceFile, destinationFile);
+    // first file is student.txt
+    // will be created in runtime named as clean.txt
+    ifstream file;
+    file.open("file1.txt", ios::in);
+    ofstream file2;
+    file2.open("file2.txt", ios::out);
+    char ch; // to read each character from file
+    while (file.get(ch)) {
+        if (ch != ' ' && ch != '\n') {
+            file2.put(ch);
+        }
+    }
+    file.close();
+    file2.close();
+
     return 0;
 }
