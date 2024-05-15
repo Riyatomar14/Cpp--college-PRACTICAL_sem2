@@ -6,7 +6,7 @@ using namespace std;
 
 class Matrix {
     int rows, cols;
-    int **matrix; // here **matrix is a pointer to a pointer, which is used to create a 2D array
+    int **matrix; 
     
 
 public:
