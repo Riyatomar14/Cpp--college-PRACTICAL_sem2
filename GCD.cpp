@@ -27,8 +27,8 @@ int main() {
     cin>>a;
     cout<<"enter number2:";
     cin>>b;
-    result=gcd(num1,num2);
-    cout<<"GCD:"<<result;
-    cout << "GCD of " << a << " and " << b << " is: " << gcdNonRecursive(a, b) << endl;
+    int result=gcd(a,b);
+    cout<<"GCD with recursive:"<<result<< endl;
+    cout << "GCD of with non_recursive" << a << " and " << b << " is: " << gcdNonRecursive(a, b) << endl;
     return 0;
 }
